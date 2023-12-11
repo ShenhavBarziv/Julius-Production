@@ -33,7 +33,7 @@ function Login() {
     try {
       await axios
         .post(
-          "/login",
+          "https://julius-production-api.vercel.app/login",
           {
             email,
             password,
