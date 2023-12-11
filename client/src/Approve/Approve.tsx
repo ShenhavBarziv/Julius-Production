@@ -14,7 +14,7 @@ function Approve() {
 
   async function fetchData() {
     try {
-      const response = await axios.get<ResponeType>('http://localhost:5000/approve',{ withCredentials: true });
+      const response = await axios.get<ResponeType>('/approve',{ withCredentials: true });
       console.log(response.data);
       if(response.data.status === true)
       {
@@ -50,7 +50,7 @@ function Approve() {
   async function handleApprove(id: string) {
     try {
       console.log('Approving user with id: ', id);
-      const response = await axios.post('http://localhost:5000/approve', { id },{ withCredentials: true });
+      const response = await axios.post('/approve', { id },{ withCredentials: true });
       if(response.data.status !== 200)
       {
         if(typeof response.data.status === 'string')
@@ -73,7 +73,7 @@ function Approve() {
   async function handleDelete(id: string) {
     try {
       console.log('Deleting user with id: ', id);
-      const response = await axios.delete('http://localhost:5000/approve', {
+      const response = await axios.delete('/approve', {
         data: { id },
         withCredentials: true
       });

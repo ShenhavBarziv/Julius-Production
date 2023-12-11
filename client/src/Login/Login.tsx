@@ -33,7 +33,7 @@ function Login() {
     try {
       await axios
         .post(
-          "http://localhost:5000/login",
+          "/login",
           {
             email,
             password,
