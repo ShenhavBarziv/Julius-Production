@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "julius-production-api.vercel.app",
+    origin: "https://www.shenhav.xyz",
     credentials: true,
   })
 );
