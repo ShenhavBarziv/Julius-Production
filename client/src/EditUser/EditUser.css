@@ -1,0 +1,44 @@
+.user-profile {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold; /* Make the key text bold */
+    margin-right: 10px;
+  }
+  
+  input[type="text"],
+  input[type="checkbox"] {
+    width: 200px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 5px; /* Less space between lines */
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(1.5);
+    text-align: left;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

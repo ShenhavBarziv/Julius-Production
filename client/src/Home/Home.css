@@ -1,0 +1,36 @@
+/* Home.css */
+
+.home-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: left;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+p {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+.instruction-list {
+  list-style-type: decimal;
+  padding-left: 20px;
+  font-size: 1.4em;
+}
+
+/* Styling for the links */
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: #0027b3;
+}

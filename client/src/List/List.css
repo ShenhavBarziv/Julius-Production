@@ -1,0 +1,33 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  th {
+    background-color: #8165655f;
+    padding: 8px;
+    text-align: left;
+  }
+  tr {
+    border-bottom: 1px solid #ddd;
+  }
+  td {
+    padding: 8px;
+  }  
+  div {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  ul li {
+    margin-bottom: 5px;
+    color: #333;
+  }
+  .loading {
+    margin-top: 10px;
+    font-style: italic;
+    color: #888;
+}

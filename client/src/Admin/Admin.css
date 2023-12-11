@@ -1,0 +1,27 @@
+/* AdminPage.css */
+
+.admin-page {
+    text-align: center;
+  }
+  .admin-page h1{
+    margin-bottom: 70px;
+  }
+  
+  .admin-link {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 25px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .admin-link:hover {
+    background-color: #34ca3c;
+    transform: scale(1.1);
+    color: white;
+  }
+  
