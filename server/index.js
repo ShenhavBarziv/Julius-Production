@@ -10,8 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "https://www.shenhav.xyz",
-    credentials: true,
-  })
+    credentials: true,})
 );
 require("dotenv").config();
 const {
