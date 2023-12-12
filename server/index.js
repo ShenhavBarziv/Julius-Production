@@ -7,12 +7,7 @@ const jwt = require("jsonwebtoken");
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "https://www.shenhav.xyz",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,})
-);
+app.use(cors());
 require("dotenv").config();
 const {
   AddRegister,
