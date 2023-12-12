@@ -10,7 +10,7 @@ function Home() {
   {
     try {
     await axios
-      .get(
+      .post(
         "https://julius-production-api.vercel.app/",
         { withCredentials: true }
       )

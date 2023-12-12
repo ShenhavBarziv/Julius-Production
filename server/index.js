@@ -50,6 +50,9 @@ function validateInput(user) {
 app.get("/", (req,res) => {
   res.send('hii');
 })
+app.post("/", (req,res) => {
+  res.send('hii');
+})
 app.post("/login", async (req, res) => {
 
   const { email, password } = req.body;
