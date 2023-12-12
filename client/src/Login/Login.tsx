@@ -41,11 +41,12 @@ function Login() {
           { withCredentials: true }
         )
         .then((res) => {
-          if (res.data.user) {
-            navigate("/profile"); //, { state: res.data.user.email }
-          } else {
-            setMessage(res.data.msg);
-          }
+          console.log(res.data);
+          // if (res.data.user) {
+          //   navigate("/profile"); //, { state: res.data.user.email }
+          // } else {
+          //   setMessage(res.data.msg);
+          // }
         });
     } catch (e) {
       console.log(e);

@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.options("*", cors({ origin: 'https://www.shenhav.xyz', optionsSuccessStatus: 200 }));
 const corsOpts = {
   origin: 'https://www.shenhav.xyz',
   credentials: true,
@@ -52,27 +53,28 @@ app.get("/", (req,res) => {
 app.post("/login", async (req, res) => {
 
   const { email, password } = req.body;
-  if (validateInput(req.body)) {
-    const data = await Login(email, password);
-    if (data.user) {
-      const token = createSecretToken(data.user._id);
-      res.cookie("token", token, {
-        withCredentials: true,
-        httpOnly: false,
-        sameSite: "None",
-        secure: true,
-      });
-      res.cookie("email", req.body.email, {
-        withCredentials: true,
-        httpOnly: false,
-        sameSite: "None",
-        secure: true,
-      });
-    }
-    res.status(200).json(data);
-  } else {
-    res.json({ msg: "One of the inputs is invalid" });
-  }
+  res.json({status:true,msg:"ohhh wheeeee"})
+  // if (validateInput(req.body)) {
+  //   const data = await Login(email, password);
+  //   if (data.user) {
+  //     const token = createSecretToken(data.user._id);
+  //     res.cookie("token", token, {
+  //       withCredentials: true,
+  //       httpOnly: false,
+  //       sameSite: "None",
+  //       secure: true,
+  //     });
+  //     res.cookie("email", req.body.email, {
+  //       withCredentials: true,
+  //       httpOnly: false,
+  //       sameSite: "None",
+  //       secure: true,
+  //     });
+  //   }
+  //   res.status(200).json(data);
+  // } else {
+  //   res.json({ msg: "One of the inputs is invalid" });
+  // }
 });
 app.post("/register", async (req, res) => {
   user = filterKeys(req.body, [
