@@ -31,6 +31,20 @@ const {
 const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+const allowCors = fn => async (req, res) => {
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', 'https://www.shenhav.xyz')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  )
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+  return await fn(req, res)
+}
 const disallowedTags = ["script", "iframe", "style"]; // Add more as needed
 function validateInput(user) {
   for (const [key, value] of Object.entries(user)) {
@@ -51,18 +65,9 @@ app.get("/", (req,res) => {
   res.send('hii');
 })
 app.post("/", (req,res) => {
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // another common pattern
-  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
   res.json({status:true,msg:"ohhh wheeeee",data:req.body})
 })
-app.post("/login", async (req, res) => {
+app.post("/login", allowCors(async (req, res) => {
   
   const { email, password } = req.body;
   res.json({status:true,msg:"ohhh wheeeee"})
@@ -87,7 +92,7 @@ app.post("/login", async (req, res) => {
   // } else {
   //   res.json({ msg: "One of the inputs is invalid" });
   // }
-});
+}));
 app.post("/register", async (req, res) => {
   user = filterKeys(req.body, [
     "email",
