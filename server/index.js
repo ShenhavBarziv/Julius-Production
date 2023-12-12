@@ -61,9 +61,9 @@ function validateInput(user) {
   }
   return true;
 }
-app.get("/", (req,res) => {
+app.get("/", allowCors((req,res) => {
   res.send('hii');
-})
+}))
 app.post("/", allowCors((req,res) => {
   res.json({status:true,msg:"ohhh wheeeee",data:req.body})
 }))
