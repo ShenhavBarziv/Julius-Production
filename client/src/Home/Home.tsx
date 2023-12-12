@@ -3,10 +3,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import axios from 'axios';
 
 function Home() {
+  async function GetHi()
+  {
+    try {
+    await axios
+      .get(
+        "https://julius-production-api.vercel.app/",
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res);
+      });
+  } catch (e) {
+    console.log(e);
+  }
+  }
   return (
     <div className="home-container">
+      <input type="submit" value="Submit" className="submit" onClick={GetHi} />
       <h1>Welcome to the Employee Management System</h1>
       <p>
         This web application is designed to efficiently manage employee information and provide key functionalities for both employees and administrators.
