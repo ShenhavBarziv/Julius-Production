@@ -31,12 +31,9 @@ function Login() {
     setLoading(true);
     setMessage("");
     try {
-      axios.defaults.baseURL = 'https://julius-production-api.vercel.app';
-      axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
-      axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
       await axios
         .post(
-          "/login",
+          "https://julius-production-api.vercel.app/login",
           {
             email,
             password,
