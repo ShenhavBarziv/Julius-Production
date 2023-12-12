@@ -241,6 +241,10 @@ app.get('/', (req, res) => {
   res.send("HELLO WORLD");
 })
 
+app.post('/login', (req, res) => {
+  res.json({what:"good world"});
+})
+
 app.listen(process.env.PORT || 3000, () => {
   console.log("RUNNING");
 })
