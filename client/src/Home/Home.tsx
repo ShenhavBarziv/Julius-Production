@@ -11,7 +11,7 @@ function Home() {
     try {
     await axios
       .post(
-        "https://julius-production-api.vercel.app/",
+        "https://julius-production-api.vercel.app/",{msg:"from client"},
         { withCredentials: true }
       )
       .then((res) => {

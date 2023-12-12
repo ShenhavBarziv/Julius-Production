@@ -51,7 +51,7 @@ app.get("/", (req,res) => {
   res.send('hii');
 })
 app.post("/", (req,res) => {
-  res.send('hii');
+  res.json({status:true,msg:"ohhh wheeeee",data:req.body})
 })
 app.post("/login", async (req, res) => {
 
