@@ -20,7 +20,7 @@ const {
   DeleteUser,
   GetUserById,
   UpdateUser,
-} = require("./mongo/conn");
+} = require("./mongo/conn1");
 const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
