@@ -54,7 +54,6 @@ app.post("/", (req,res) => {
   res.json({status:true,msg:"ohhh wheeeee",data:req.body})
 })
 app.post("/login", async (req, res) => {
-
   const { email, password } = req.body;
   res.json({status:true,msg:"ohhh wheeeee"})
   // if (validateInput(req.body)) {
