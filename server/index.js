@@ -64,9 +64,9 @@ function validateInput(user) {
 app.get("/", (req,res) => {
   res.send('hii');
 })
-app.post("/", (req,res) => {
+app.post("/", allowCors((req,res) => {
   res.json({status:true,msg:"ohhh wheeeee",data:req.body})
-})
+}))
 app.post("/login", allowCors(async (req, res) => {
   
   const { email, password } = req.body;
@@ -93,7 +93,7 @@ app.post("/login", allowCors(async (req, res) => {
   //   res.json({ msg: "One of the inputs is invalid" });
   // }
 }));
-app.post("/register", async (req, res) => {
+app.post("/register", allowCors(async (req, res) => {
   user = filterKeys(req.body, [
     "email",
     "password",
@@ -119,8 +119,8 @@ app.post("/register", async (req, res) => {
   } else {
     res.json({ code: 400, msg: "One of the inputs is invalid" });
   }
-});
-app.get("/list", async (req, res) => {
+}));
+app.get("/list", allowCors(async (req, res) => {
   const userVerification = req.cookies
     ? await UserVerification(req.cookies.token)
     : { status: false };
@@ -133,7 +133,7 @@ app.get("/list", async (req, res) => {
   } else {
     res.json({ status: false });
   }
-});
+}));
 function filterKeys(data, allowedKeys) {
   const filteredData = {};
   allowedKeys.forEach((key) => {
@@ -143,13 +143,13 @@ function filterKeys(data, allowedKeys) {
   });
   return filteredData;
 }
-app.get("/profile", async (req, res) => {
+app.get("/profile", allowCors(async (req, res) => {
   const userVerification = req.cookies
     ? await UserVerification(req.cookies.token)
     : { status: false };
   res.json(userVerification);
-});
-app.get("/approve", async (req, res) => {
+}));
+app.get("/approve", allowCors(async (req, res) => {
   const userVerification = req.cookies
     ? await UserVerification(req.cookies.token)
     : { status: false };
@@ -160,8 +160,8 @@ app.get("/approve", async (req, res) => {
   } else {
     res.json({ status: "notLoggedIn", data: {} });
   }
-});
-app.delete("/approve", async (req, res) => {
+}));
+app.delete("/approve", allowCors(async (req, res) => {
   const userVerification = req.cookies
     ? await UserVerification(req.cookies.token)
     : { status: false };
@@ -172,9 +172,9 @@ app.delete("/approve", async (req, res) => {
       status: "Access Denied: You are not authorized to perform this action.",
     });
   }
-});
+}));
 
-app.post("/approve", async (req, res) => {
+app.post("/approve", allowCors(async (req, res) => {
   const userVerification = req.cookies
     ? await UserVerification(req.cookies.token)
     : { status: false };
@@ -185,8 +185,8 @@ app.post("/approve", async (req, res) => {
       status: "Access Denied: You are not authorized to perform this action.",
     });
   }
-});
-app.delete("/del", async (req, res) => {
+}));
+app.delete("/del", allowCors(async (req, res) => {
   const userVerification = req.cookies
     ? await UserVerification(req.cookies.token)
     : { status: false };
@@ -200,8 +200,8 @@ app.delete("/del", async (req, res) => {
     res.json({ status: "" });
   }
   res.json();
-});
-app.get("/EditUser", async (req, res) => {
+}));
+app.get("/EditUser", allowCors(async (req, res) => {
   const userVerification = req.cookies
     ? await UserVerification(req.cookies.token)
     : { status: false };
@@ -215,8 +215,8 @@ app.get("/EditUser", async (req, res) => {
   } else {
     res.json({ status: "" });
   }
-});
-app.post("/SaveUserChanges", async (req, res) => {
+}));
+app.post("/SaveUserChanges", allowCors(async (req, res) => {
   data = req.body;
   const userVerification = req.cookies
     ? await UserVerification(req.cookies.token)
@@ -232,7 +232,7 @@ app.post("/SaveUserChanges", async (req, res) => {
       status: "Access Denied: You are not authorized to perform this action.",
     });
   }
-});
+}));
 function createSecretToken(id) {
   return jwt.sign({ id }, process.env.TOKEN_KEY, {
     expiresIn: 24 * 60 * 60,
