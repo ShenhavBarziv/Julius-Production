@@ -9,7 +9,7 @@ app.use(express.json());//
 app.use(express.urlencoded({ extended: true }));
 app.options("*", cors({ origin: 'https://www.shenhav.xyz', optionsSuccessStatus: 200 }));
 const corsOpts = {
-  origin: 'https://www.shenhav.xyz',
+  origin: '*',
   credentials: true,
   methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
   allowedHeaders: ['Content-Type'],
