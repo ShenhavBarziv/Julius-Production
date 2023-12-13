@@ -27,7 +27,7 @@ const {
   DeleteUser,
   GetUserById,
   UpdateUser,
-} = require("./mongo/conn1");
+} = require("./mongo/conn");
 const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -71,27 +71,27 @@ app.post("/login", allowCors(async (req, res) => {
   
   const { email, password } = req.body;
   res.json({status:true,msg:"ohhh wheeeee"})
-  // if (validateInput(req.body)) {
-  //   const data = await Login(email, password);
-  //   if (data.user) {
-  //     const token = createSecretToken(data.user._id);
-  //     res.cookie("token", token, {
-  //       withCredentials: true,
-  //       httpOnly: false,
-  //       sameSite: "None",
-  //       secure: true,
-  //     });
-  //     res.cookie("email", req.body.email, {
-  //       withCredentials: true,
-  //       httpOnly: false,
-  //       sameSite: "None",
-  //       secure: true,
-  //     });
-  //   }
-  //   res.status(200).json(data);
-  // } else {
-  //   res.json({ msg: "One of the inputs is invalid" });
-  // }
+  if (validateInput(req.body)) {
+    const data = await Login(email, password);
+    if (data.user) {
+      const token = createSecretToken(data.user._id);
+      res.cookie("token", token, {
+        withCredentials: true,
+        httpOnly: false,
+        sameSite: "None",
+        secure: true,
+      });
+      res.cookie("email", req.body.email, {
+        withCredentials: true,
+        httpOnly: false,
+        sameSite: "None",
+        secure: true,
+      });
+    }
+    res.status(200).json(data);
+  } else {
+    res.json({ msg: "One of the inputs is invalid" });
+  }
 }));
 app.post("/register", allowCors(async (req, res) => {
   user = filterKeys(req.body, [
