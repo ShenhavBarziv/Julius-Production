@@ -17,7 +17,6 @@ const corsOpts = {
 };
 app.use(cors(corsOpts));
 require("dotenv").config();
-const { MongoClient } = require('mongodb');
 const {
   AddRegister,
   Login,
