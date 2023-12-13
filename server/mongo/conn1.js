@@ -1,4 +1,4 @@
-const { MongoClient, ObjectId } = require('mongodb');
+// const { MongoClient, ObjectId } = require('mongodb');
 require('dotenv').config();
 const { compare, hash } = require('bcryptjs');
 const dbName = "users";
