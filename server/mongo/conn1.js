@@ -1,3 +1,9 @@
+const { MongoClient, ObjectId } = require('mongodb');
+require('dotenv').config();
+const { compare, hash } = require('bcryptjs');
+const dbName = "users";
+const registerCollectionName = "register";
+const userCollectionName = "users";
 function AddRegister() {}
 function Login() {}
 function List() {}
