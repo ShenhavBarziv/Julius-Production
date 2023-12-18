@@ -1,6 +1,6 @@
-//const { MongoClient } = require('mongodb');
-require('dotenv').config();
-const { compare, hash } = require('bcryptjs');
+const { MongoClient } = require("mongodb");
+require("dotenv").config();
+const { compare, hash } = require("bcryptjs");
 const dbName = "users";
 const registerCollectionName = "register";
 const userCollectionName = "users";
@@ -14,4 +14,14 @@ function GetUserById() {}
 function DeleteUser() {}
 function UpdateUser() {}
 
-module.exports = { AddRegister, Login, List, ListReg, DeleteReg, ApproveReg, DeleteUser, GetUserById, UpdateUser };
+module.exports = {
+  AddRegister,
+  Login,
+  List,
+  ListReg,
+  DeleteReg,
+  ApproveReg,
+  DeleteUser,
+  GetUserById,
+  UpdateUser,
+};
