@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "https://julius-production-api.vercel.app",
+  "proxy": " https://202f-46-117-110-186.ngrok-free.app",
   "homepage": "https://www.shenhav.xyz",
   "private": true,
   "dependencies": {
